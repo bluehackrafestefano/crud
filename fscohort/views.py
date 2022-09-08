@@ -42,10 +42,17 @@ def student_update(request, id):
 def student_delete(request, id):
     # student = Student.objects.get(id=id)
     student = get_object_or_404(Student, id=id)
-    form = StudentForm(instance=student)
     if request.method=='POST':
             student.delete()
-            # form = StudentForm(instance=student)
             return redirect("home")
     return render(request, 'fscohort/student_delete.html')
+
+
+def student_detail(request, id):
+    # student = Student.objects.get(id=id)
+    student = get_object_or_404(Student, id=id)
+    context = {
+        'student': student,
+    }
+    return render(request, 'fscohort/student_detail.html', context)
 

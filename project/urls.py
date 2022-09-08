@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from fscohort.views import home, student_create, student_delete, student_update
+from fscohort.views import home, student_create, student_delete, student_detail, student_update
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -23,4 +23,5 @@ urlpatterns = [
     path('create/', student_create, name='create'),
     path('update/<int:id>', student_update, name='update'),
     path('delete/<int:id>', student_delete, name='delete'),
+    path('detail/<int:id>', student_detail, name='detail'),
 ]
