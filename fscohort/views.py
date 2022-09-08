@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Student
 from .forms import StudentForm
 from django.shortcuts import get_object_or_404
+from django.contrib import messages
 
 # Create your views here.
 def home(request):
@@ -17,6 +18,7 @@ def student_create(request):
         form = StudentForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Student Created!')
             # form = StudentForm()
             return redirect("home")
     context = {
@@ -32,6 +34,7 @@ def student_update(request, id):
         if form.is_valid():
             form.save()
             # form = StudentForm(instance=student)
+            messages.success(request, 'Student Updated!')
             return redirect("home")
     context = {
         "form": form,

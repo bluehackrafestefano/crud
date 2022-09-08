@@ -3,3 +3,6 @@
 {{ student }}
 <br>
 {{ student.number }}
+<br>
+<a href="{% url 'update' student.id %}"><button>Update</button></a>
+<a href="{% url 'delete' student.id %}"><button>Delete</button></a>
